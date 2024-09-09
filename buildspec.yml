@@ -13,13 +13,13 @@ phases:
   build:
     commands:
       - echo Building, Testing, and Packaging the application...
-      - cd uperApp/uperApp   # Corrected path
+      - cd uperApp   # Navigate to the correct folder
       - mvn package
 
 artifacts:
   files:
-    - uperApp/uperApp/target/*.jar   # Correct artifact path
+    - uperApp/target/*.jar   # Correct artifact path
 
 cache:
   paths:
-    - '/root/.m2/**/*'  # Caching Maven dependencies
+    - '/root/.m2/**/*'
