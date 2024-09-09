@@ -13,12 +13,12 @@ phases:
   build:
     commands:
       - echo Building, Testing, and Packaging the application...
-      - cd uperApp/uperapp   # Navigate to the correct subdirectory
-      - mvn package  # Now Maven can find the pom.xml
+      - cd uperApp/uperApp   # Corrected path
+      - mvn package
 
 artifacts:
   files:
-    - uperApp/uperapp/target/*.jar   # Ensure this path matches where your JAR is generated
+    - uperApp/uperApp/target/*.jar   # Correct artifact path
 
 cache:
   paths:
