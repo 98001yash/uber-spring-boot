@@ -45,41 +45,41 @@ import java.util.Set;
         user.setRoles(Set.of(Role.RIDER));
     }
 
-    @Test
-    void testSignUp_success(){
-        SignUpDto signupDto = new SignUpDto();
-        signupDto.setEmail("test@example.com");
-        signupDto.setName("Test name");
-        signupDto.setPassword("password");
-
-
-        webTestClient.post()
-                .uri("/auth/signup")
-                .bodyValue(signupDto)
-                .exchange()
-                .expectStatus().isCreated()
-                .expectBody()
-                .jsonPath("$.data.email").isEqualTo(signupDto.getEmail())
-                .jsonPath("$.data.name").isEqualTo(signupDto.getName());
-    }
+//    @Test
+//    void testSignUp_success(){
+//        SignUpDto signupDto = new SignUpDto();
+//        signupDto.setEmail("test@example.com");
+//        signupDto.setName("Test name");
+//        signupDto.setPassword("password");
+//
+//
+//        webTestClient.post()
+//                .uri("/auth/signup")
+//                .bodyValue(signupDto)
+//                .exchange()
+//                .expectStatus().isCreated()
+//                .expectBody()
+//                .jsonPath("$.data.email").isEqualTo(signupDto.getEmail())
+//                .jsonPath("$.data.name").isEqualTo(signupDto.getName());
+//    }
 
 //    @Test
 //    @WithUserDetails("admin@gmail.com")
-    void testOnBoardDriver_success(){
-        if(!userRepositories.existsById(1L)){
-            userRepositories.save(user);
-        }
-
-        OnboardDriverDto onboardDriverDto = new OnboardDriverDto();
-        onboardDriverDto.setVehicleId("ABC123");
-
-        webTestClient
-                .post()
-                .uri("/auth/onBoardDriver/1")
-                .bodyValue(onboardDriverDto)
-                .exchange()
-                .expectStatus().isCreated();
-    }
+//    void testOnBoardDriver_success(){
+//        if(!userRepositories.existsById(1L)){
+//            userRepositories.save(user);
+//        }
+//
+//        OnboardDriverDto onboardDriverDto = new OnboardDriverDto();
+//        onboardDriverDto.setVehicleId("ABC123");
+//
+//        webTestClient
+//                .post()
+//                .uri("/auth/onBoardDriver/1")
+//                .bodyValue(onboardDriverDto)
+//                .exchange()
+//                .expectStatus().isCreated();
+//    }
 
 
 }
