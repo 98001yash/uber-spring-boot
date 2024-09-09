@@ -1,11 +1,9 @@
 version: 0.2
 
-working_directory: ./uperapp
-
 phases:
   install:
     commands:
-      - echo Using pre-installed Maven...
+      - cd uperapp
   pre_build:
     commands:
       - echo Logging in to Docker Hub...
