@@ -1,5 +1,7 @@
 version: 0.2
 
+working_directory: ./uperApp
+
 phases:
   install:
     commands:
@@ -9,7 +11,6 @@ phases:
       - echo Logging in to Docker Hub...
       - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
   build:
-    working_directory: ./uperApp
     commands:
       - echo Building, Testing and packaging the application...
       - mvn package
