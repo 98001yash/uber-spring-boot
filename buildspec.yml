@@ -1,9 +1,11 @@
-version: 0.2
+version: 0.2.0
 
 working_directory: ./uperApp
 
 phases:
   install:
+    runtime-versions:
+      java: corretto21
     commands:
       - echo Using pre-installed Maven...
   pre_build:
@@ -13,11 +15,12 @@ phases:
   build:
     commands:
       - echo Building, Testing and packaging the application...
-      - mvn package
+      - mvn clean package
   post_build:
     commands:
-      - echo Build completed.
-
+      - echo Build completed on `date`
+      - ls -al
+      - echo "Running tests"
 artifacts:
   files:
     - target/*.jar
