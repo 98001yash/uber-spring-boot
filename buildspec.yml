@@ -3,26 +3,23 @@ version: 0.2
 phases:
   install:
     commands:
-      - mkdir -p uperapp
-      - cd uperapp
+      - echo Skipping install phase, no setup required.
+
   pre_build:
     commands:
       - echo Logging in to Docker Hub...
       - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+
   build:
     commands:
-      - echo Building, Testing and packaging the application...
-      - if [ -f pom.xml ]; then echo "pom.xml file found"; else echo "pom.xml file not found"; fi
-      - mvn package
-  post_build:
-    commands:
-      - echo Build completed.
+      - echo Building, Testing, and Packaging the application...
+      - cd uperApp/uperapp   # Navigate to the correct subdirectory
+      - mvn package  # Now Maven can find the pom.xml
 
 artifacts:
   files:
-    - target/*.jar
-  discard-paths: yes
+    - uperApp/uperapp/target/*.jar   # Ensure this path matches where your JAR is generated
 
 cache:
   paths:
-    - '/root/.m2/**/*'
+    - '/root/.m2/**/*'  # Caching Maven dependencies
