@@ -1,13 +1,16 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo Using pre-installed Maven...
   pre_build:
     commands:
       - echo Logging in to Docker Hub...
       - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
   build:
     commands:
-      - echo Building, Testing, and packaging the application...
+      - echo Building, Testing and packaging the application...
       - mvn package
   post_build:
     commands:
